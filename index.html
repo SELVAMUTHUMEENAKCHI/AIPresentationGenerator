@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Presentation Generator</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #ff7eb3, #ff5277, #764ba2);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            animation: backgroundFade 10s infinite alternate;
+            position: relative;
+        }
+
+        @keyframes backgroundFade {
+            0% { background: linear-gradient(135deg, #ff7eb3, #ff5277, #764ba2); }
+            100% { background: linear-gradient(135deg, #667eea, #764ba2, #ff7eb3); }
+        }
+
+        h1 {
+            font-size: 3rem;
+            text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+            margin-bottom: 20px;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            width: 90%;
+            max-width: 500px;
+            animation: scaleUp 1s ease-in-out;
+        }
+
+        @keyframes scaleUp {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        input[type="text"] {
+            width: 85%;
+            padding: 15px;
+            margin: 15px 0;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            outline: none;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        button {
+            padding: 14px 24px;
+            background: linear-gradient(45deg, #ff7eb3, #ff5277);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: 0.4s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        button::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: left 0.4s;
+        }
+
+        button:hover::after {
+            left: 100%;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+        }
+
+        .download-link {
+            margin-top: 25px;
+        }
+
+        .download-link button {
+            background: linear-gradient(45deg, #28c76f, #20a957);
+        }
+
+        .download-link button:hover {
+            background: linear-gradient(45deg, #20a957, #1d8c50);
+        }
+
+        .notebook, .writing-board, .student {
+            position: absolute;
+            opacity: 0.9;
+            max-width: 100px; /* Ensures images are scaled correctly */
+        }
+
+        .notebook {
+            top: 20px;
+            right: 20px;
+        }
+
+        .writing-board {
+            left: 20px;
+            top: 50px;
+        }
+
+        .student {
+            right: 30px;
+            bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1> AI Presentation Generator </h1>
+
+    <!-- Ensure images are in the same folder or update paths accordingly -->
+    <img src="./notebook.png" alt="Notebook" class="notebook" onerror="this.style.display='none'">
+    <img src="./writing-board.png" alt="Writing Board" class="writing-board" onerror="this.style.display='none'">
+    <img src="./student.png" alt="Student" class="student" onerror="this.style.display='none'">
+
+    <div class="container">
+        <form method="POST">
+            <input type="text" name="topic" placeholder="Enter a topic" required>
+            <button type="submit">Generate Presentation</button>
+        </form>
+        <div class="download-link">
+            <a href="download_presentation" download>
+                <button>Download Presentation</button>
+            </a>
+        </div>
+    </div>
+</body>
+</html>
